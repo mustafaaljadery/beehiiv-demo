@@ -1,0 +1,20 @@
+<div class="p-8 w-full flex flex-col overflow-auto flex-1">
+  <h1 class="font-bold text-4xl">My Tickets</h1>
+  <p class="mt-4 text-sm font-regular text-gray-500">A list of customer tickets that have to be solved.</p>
+  <ul>
+    <div>
+</div>
+  <div class="flex flex-col space-y-4 pb-12 mt-8">
+    <% @entries.order(priority: :desc, created_at: :asc).each do |entry| %>
+    <li class="p-6 w-full border flex flex-col rounded-xl">
+      <div class="w-full flex flex-row justify-between items-between">
+        <p class="text-xs font-regular text-gray-500 mb-auto"><%= entry.created_at.strftime("%B %d, %Y %I:%M %p")%></p>
+        <p class="text-xl font-bold text-gray-900">P<%= entry.priority %></p>
+      </div>
+      <p class="text-2xl mt-1 font-semibold text-[#363636]"><%= entry.subject %></p>
+      <p class="text-sm font-regular text-gray-500 mt-2.5"><%= entry.description %></p>
+    </li>
+  <% end %>
+  </div>
+</ul>
+</div>
